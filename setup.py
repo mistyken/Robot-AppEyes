@@ -20,10 +20,10 @@ from os.path import join, dirname
 
 sys.path.append(join(dirname(__file__), 'RobotAppEyes'))
 
-execfile(join(dirname(__file__), 'RobotAppEyes', 'version.py'))
+exec(open(join(dirname(__file__), 'RobotAppEyes', 'version.py')).read())
 
 DESCRIPTION = """
-Robot-AppEyes is a visual verfication library for Robot Framework
+Robot-AppEyes is a visual verification library for Robot Framework
 that leverages the Eyes-Selenium and Selenium2 libraries.
 """[1:-1]
 
@@ -33,16 +33,16 @@ setup(name='Robot-AppEyes',
       long_description=DESCRIPTION,
       author='Thomas Armstrong, Simon McMorran, Gareth Nixon, Adam Simmons',
       author_email='<tarmstrong@navinet.net>, <smcmorran@navinet.net>, <gnixon@navinet.net>, <asimmons@navinet.net>',
-      url='https://github.com/NaviNet/Robot-AppEyes',
+      url='https://github.com/mistyken/Robot-AppEyes',
       license='Apache License 2.0',
-      keywords='robotframework testing testautomation eyes-selenium selenium2 visual-verification',
+      keywords='robotframework testing test automation eyes-selenium selenium2 visual-verification',
       platforms='any',
       classifiers=[
           "License :: OSI Approved :: Apache Software License",
           "Programming Language :: Python",
           "Development Status :: 4 - Beta",
           "Intended Audience :: Developers",
-          "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 3.7",
           "Topic :: Software Development :: Testing",
           "Topic :: Software Development :: Quality Assurance"
       ],
@@ -55,5 +55,5 @@ setup(name='Robot-AppEyes',
       data_files=[('AppEyesTests', ['Tests/acceptance/RobotAppEyesTest.txt', 'Tests/acceptance/pictureOne.png',
                                     'Tests/acceptance/pictureTwo.png', 'doc/RobotAppEyes-KeywordDocumentation.html',
                                     'doc/ChangeLog.txt'])],
-      download_url='https://github.com/NaviNet/Robot-AppEyes/tarball/1.2',
+      download_url='https://github.com/mistyken/Robot-AppEyes/tarball/1.2',
       )
