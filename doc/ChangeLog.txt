@@ -22,3 +22,7 @@ Version 1.2
 - Fixed an issue with the compare image keyword so it can run with the newest versions of eyes-selenium
 - Updated and added another logging parameter to the keywords to return HTTP request information, logs are turned off by default
 - Updated the Open Eyes Session keyword regarding the eyes-selenium change to setting the match level for the screenshots
+
+Version 1.3
+-----------
+- Updated project to support python 3.0

@@ -27,7 +27,7 @@ Robot-AppEyes is a visual verification library for Robot Framework
 that leverages the Eyes-Selenium and Selenium2 libraries.
 """[1:-1]
 
-setup(name='Robot-AppEyes',
+setup(name='Robot-AppEyes-BR',
       version=VERSION,
       description='Visual Verification testing library for Robot Framework',
       long_description=DESCRIPTION,
@@ -47,7 +47,7 @@ setup(name='Robot-AppEyes',
           "Topic :: Software Development :: Quality Assurance"
       ],
       install_requires=[
-          'robotframework >= 2.8.7',
+          'robotframework >= 3.0',
           'robotframework-selenium2library >= 1.7.4',
           'eyes-selenium >= 3.2'
       ],
@@ -55,5 +55,5 @@ setup(name='Robot-AppEyes',
       data_files=[('AppEyesTests', ['Tests/acceptance/RobotAppEyesTest.txt', 'Tests/acceptance/pictureOne.png',
                                     'Tests/acceptance/pictureTwo.png', 'doc/RobotAppEyes-KeywordDocumentation.html',
                                     'doc/ChangeLog.txt'])],
-      download_url='https://github.com/mistyken/Robot-AppEyes/tarball/1.2',
+      download_url='https://github.com/mistyken/Robot-AppEyes/tarball/1.3',
       )

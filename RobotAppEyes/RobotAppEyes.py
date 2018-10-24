@@ -16,7 +16,7 @@
 #  limitations under the License.
 
 import os
-import httplib
+import http.client
 import base64
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import InvalidElementStateException
@@ -25,9 +25,9 @@ from applitools import logger
 from applitools.logger import StdoutLogger
 from applitools.geometry import Region
 from applitools.eyes import Eyes, BatchInfo
-from applitools.utils import _image_utils
-from applitools._webdriver import EyesScreenshot
-from version import VERSION
+from applitools.utils import image_utils
+from applitools.selenium.eyes import EyesScreenshot
+from .version import VERSION
 
 _version_ = VERSION
 
@@ -137,7 +137,7 @@ class RobotAppEyes:
             logger.set_logger(StdoutLogger())
             logger.open_()
         if httpDebugLog is True:
-            httplib.HTTPConnection.debuglevel = 1
+            http.client.HTTPConnection.debuglevel = 1
         if osname is not None:
             eyes.host_os = osname  # (str)
         if browsername is not None:
@@ -186,7 +186,7 @@ class RobotAppEyes:
             logger.set_logger(StdoutLogger())
             logger.open_()
         if httpDebugLog is True:
-            httplib.HTTPConnection.debuglevel = 1
+            http.client.HTTPConnection.debuglevel = 1
 
         eyes.force_full_page_screenshot = force_full_page_screenshot
         eyes.check_window(name)
@@ -216,7 +216,7 @@ class RobotAppEyes:
             logger.set_logger(StdoutLogger())
             logger.open_()
         if httpDebugLog is True:
-            httplib.HTTPConnection.debuglevel = 1
+            http.client.HTTPConnection.debuglevel = 1
 
         intwidth = int(width)
         intheight = int(height)
@@ -250,7 +250,7 @@ class RobotAppEyes:
             logger.set_logger(StdoutLogger())
             logger.open_()
         if httpDebugLog is True:
-            httplib.HTTPConnection.debuglevel = 1
+            http.client.HTTPConnection.debuglevel = 1
 
         searchElement = None
 
@@ -290,7 +290,7 @@ class RobotAppEyes:
             logger.set_logger(StdoutLogger())
             logger.open_()
         if httpDebugLog is True:
-            httplib.HTTPConnection.debuglevel = 1
+            http.client.HTTPConnection.debuglevel = 1
 
         searchElement = None
 
@@ -343,11 +343,11 @@ class RobotAppEyes:
             logger.set_logger(StdoutLogger())
             logger.open_()
         if httpDebugLog is True:
-            httplib.HTTPConnection.debuglevel = 1
+            http.client.HTTPConnection.debuglevel = 1
 
         with open(path, 'rb') as image_file:
-            screenshot64 = image_file.read().encode('base64')
-            screenshot = _image_utils.png_image_from_bytes(base64.b64decode(screenshot64))
+            screenshot64 = base64.b64encode(image_file.read())
+            screenshot = image_utils.image_from_base64(base64.b64decode(screenshot64))
             screenshotBytes = EyesScreenshot.create_from_image(screenshot, eyes._driver)
         title = eyes.get_title()
         app_output = {'title': title, 'screenshot64': None}
@@ -382,7 +382,7 @@ class RobotAppEyes:
             logger.set_logger(StdoutLogger())
             logger.open_()
         if httpDebugLog is True:
-            httplib.HTTPConnection.debuglevel = 1
+            http.client.HTTPConnection.debuglevel = 1
 
         eyes.close()
         eyes.abort_if_not_closed()
